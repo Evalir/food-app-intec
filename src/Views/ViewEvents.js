@@ -7,7 +7,7 @@ const Header = styled.h3`
 `;
 
 export default function ViewEvents() {
-  const { state, dispatch, actions } = useContext(Context);
+  const { state } = useContext(Context);
 
   return (
     <div className="container">

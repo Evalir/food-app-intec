@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
-import { INITIAL_STATE, reducer } from './Reducers';
+import { INITIAL_STATE } from './StoreConfig';
+import { reducer } from './Reducers';
 import { useActions } from './Actions';
 
 export const Context = React.createContext(INITIAL_STATE);

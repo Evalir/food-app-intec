@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export default function Navbar(props) {
+
+export default function Navbar() {
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link to="#" className="brand-logo">
+        <Link to="/" className="brand-logo">
           Foodtec
         </Link>
         <ul id="nav-mobile" className="right hide-on-med-and-down">

@@ -1,14 +1,4 @@
-export const types = {
-  CREATE_EVENT: 'CREATE_EVENT',
-  DELETE_EVENT: 'DELETE_EVENT',
-  UPDATE_EVENT: 'UPDATE_EVENT',
-};
-
-export const INITIAL_STATE = {
-  hello: 'world',
-  message: 'hello',
-  events: [{ name: 'Food club' }, { name: 'Free food' }, { name: 'Bon' }],
-};
+import { types, INITIAL_STATE } from '../StoreConfig';
 
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

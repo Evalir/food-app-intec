@@ -1,4 +1,4 @@
-import { types } from '../Reducers';
+import { types } from '../StoreConfig';
 
 export function useActions(state, dispatch) {
   function CreateEvent(newEvent) {

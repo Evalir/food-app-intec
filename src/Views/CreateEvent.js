@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 
 import { Context } from '../Store/StateProvider';
@@ -9,7 +9,8 @@ const Header = styled.h3`
 
 export default function CreateEvent() {
   const [eventName, setEventName] = useState('');
-  const { state, dispatch, actions } = useContext(Context);
+  const { actions } = useContext(Context);
+
   function SubmitForm(e) {
     e.preventDefault();
     actions.CreateEvent({ name: eventName });
