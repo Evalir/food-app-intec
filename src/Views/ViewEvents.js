@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Context } from '../Store/Store';
 
 import FoodCard from '../Components/FoodCard/FoodCard';
-
+import Navbar from '../Components/Navbar/Navbar';
 const Header = styled.h3`
   font-family: 'Questrial', Helvetica;
   margin: 0 0 1em 0;
@@ -16,23 +16,38 @@ export const CenteringWrapper = styled.div`
   padding-top: 1em;
 `;
 
+export const Container = styled.div`
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+`;
 export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-gap: 20px;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export default function ViewEvents() {
   const { state, actions } = useContext(Context);
 
   return (
-    <CenteringWrapper>
-      <Header>Events</Header>
-      <Grid>
-        {state.events.map(event => (
-          <FoodCard key={event.name} name={event.name} />
-        ))}
-      </Grid>
-    </CenteringWrapper>
+    <>
+      <Navbar />
+      <CenteringWrapper>
+        <Header>Events</Header>
+        <Container>
+          <Grid>
+            {state.events.map(event => (
+              <FoodCard key={event.name} name={event.name} />
+            ))}
+          </Grid>
+        </Container>
+      </CenteringWrapper>
+    </>
   );
 }

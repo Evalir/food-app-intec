@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledDrawer } from './Styled';
-
+import { StyledNavLink } from '../Styled';
 /**
  * Top drawer for mobile view. Contains designers, shots, and search bar.
  * @param {bool} show
@@ -12,7 +12,9 @@ const TopDrawer = ({ show }) => {
     <StyledDrawer show={isShown}>
       <ul>
         <li>Home</li>
-        <li>Create Event</li>
+        <li>
+          <StyledNavLink to="/create">Create Event</StyledNavLink>
+        </li>
       </ul>
     </StyledDrawer>
   );

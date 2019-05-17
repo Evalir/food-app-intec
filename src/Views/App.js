@@ -16,7 +16,6 @@ export default function App() {
     <StateProvider>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Navbar />
           <Switch>
             <Route path="/" exact component={ViewEvents} />
             <Route path="/create" exact component={CreateEvent} />

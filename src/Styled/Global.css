@@ -9,4 +9,5 @@ body,
 html {
   font-family: 'Questrial', Arial, Helvetica, sans-serif;
   background: #f9f7f2;
+  overflow-x: hidden;
 }

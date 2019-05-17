@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 export const Card = styled.div`
   min-height: 300px;
   width: 200px;
   border-radius: 8px;
   background: white;
+  margin: 2px;
 `;
 
 export const ImageContainer = styled.div`

@@ -15,7 +15,7 @@ const FoodCard = ({ key, name, description }) => {
         <FoodTitle>{name}</FoodTitle>
         <p>{description}</p>
 
-        <FoodLink>View</FoodLink>
+        <FoodLink to="/">View</FoodLink>
       </InfoWrapper>
     </Card>
   );

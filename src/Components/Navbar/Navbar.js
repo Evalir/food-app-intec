@@ -29,7 +29,7 @@ const Navbar = () => {
           <div>
             <ul>
               <li>
-                <StyledLogoLink>Food App</StyledLogoLink>
+                <StyledLogoLink to="/">Food App</StyledLogoLink>
               </li>
             </ul>
           </div>
@@ -55,13 +55,13 @@ const Navbar = () => {
         <div>
           <ul>
             <li>
-              <StyledLogoLink>Food App</StyledLogoLink>
+              <StyledLogoLink to="/">Food App</StyledLogoLink>
             </li>
             <li>
               <StyledNavLink to="/">Home</StyledNavLink>
             </li>
             <li>
-              <StyledNavLink to="/">Create Event</StyledNavLink>
+              <StyledNavLink to="/create">Create Event</StyledNavLink>
             </li>
             <li>
               <StyledNavLink to="/">About</StyledNavLink>
