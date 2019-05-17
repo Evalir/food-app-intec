@@ -1,0 +1,12 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  font-family: 'Questrial', Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+}

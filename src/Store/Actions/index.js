@@ -7,7 +7,15 @@ export function useActions(state, dispatch) {
     dispatch({ type: types.CREATE_EVENT, payload: newEventArray });
   }
 
+  function DeleteEvent(eventToDelete) {
+    const newEventArray = state.events.filter(
+      event => event.name !== eventToDelete.name,
+    );
+    console.log('dispatching new array:', newEventArray);
+    dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
+  }
   return {
     CreateEvent,
+    DeleteEvent,
   };
 }

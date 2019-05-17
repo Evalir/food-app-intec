@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
-import styled from '@emotion/styled';
-
-import { Context } from '../Store/StateProvider';
+import styled from 'styled-components';
+import { Context } from '../Store/Store';
 
 const Header = styled.h3`
   font-family: 'Helvetica';
@@ -14,13 +13,14 @@ export default function CreateEvent() {
   function SubmitForm(e) {
     e.preventDefault();
     actions.CreateEvent({ name: eventName });
+    setEventName('');
   }
 
   return (
     <div className="container">
       <Header>Create Event</Header>
       <form onSubmit={SubmitForm}>
-        <div className="">
+        <div className="event-form">
           <label>Event name</label>
           <input
             type="text"
@@ -28,7 +28,7 @@ export default function CreateEvent() {
             onChange={e => setEventName(e.target.value)}
           />
         </div>
-        <button className="btn" type="button">
+        <button className="btn-large waves-effect waves-light " type="button">
           Submit
         </button>
       </form>

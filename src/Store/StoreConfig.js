@@ -5,7 +5,6 @@ export const types = {
 };
 
 export const INITIAL_STATE = {
-  hello: 'world',
-  message: 'hello',
+  isSignedIn: false,
   events: [{ name: 'Food club' }, { name: 'Free food' }, { name: 'Bon' }],
 };

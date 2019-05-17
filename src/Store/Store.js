@@ -5,7 +5,7 @@ import { useActions } from './Actions';
 
 export const Context = React.createContext(INITIAL_STATE);
 
-export default function StateProvider({ children }) {
+export default function Store({ children }) {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const actions = useActions(state, dispatch);
 
