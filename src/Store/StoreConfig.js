@@ -6,5 +6,11 @@ export const types = {
 
 export const INITIAL_STATE = {
   isSignedIn: false,
-  events: [{ name: 'Food club' }, { name: 'Free food' }, { name: 'Bon' }],
+  events: [
+    { name: 'Food club' },
+    { name: 'Free food' },
+    { name: 'Bon' },
+    { name: 'Sicario' },
+    { name: 'wow' },
+  ],
 };

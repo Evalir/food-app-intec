@@ -3,13 +3,23 @@ import styled from 'styled-components';
 
 import { Context } from '../Store/Store';
 
+import FoodCard from '../Components/FoodCard/FoodCard';
+
 const Header = styled.h3`
-  font-family: 'Helvetica';
+  font-family: 'Questrial', Helvetica;
+  margin: 0 0 1em 0;
 `;
 
 export const CenteringWrapper = styled.div`
   width: 80vw;
   margin: 0 auto;
+  padding-top: 1em;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-gap: 20px;
 `;
 
 export default function ViewEvents() {
@@ -18,22 +28,11 @@ export default function ViewEvents() {
   return (
     <CenteringWrapper>
       <Header>Events</Header>
-      {state.events.map(event => (
-        <div className="row" key={event.name}>
-          <div className="col s4">
-            <p>{event.name}</p>
-          </div>
-          <div className="col s6 offset-s2 ">
-            <button
-              type="button"
-              className="btn red"
-              onClick={() => actions.DeleteEvent(event)}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+      <Grid>
+        {state.events.map(event => (
+          <FoodCard key={event.name} name={event.name} />
+        ))}
+      </Grid>
     </CenteringWrapper>
   );
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Spacer = styled.div`
   flex: 1;
@@ -7,7 +8,7 @@ export const StyledNavbar = styled.header`
   position: relative;
   z-index: 200;
   width: 100%;
-  background-color: ${props => props.theme.black};
+  background-color: ${props => props.theme.orange};
   height: 42px;
 `;
 
@@ -18,7 +19,6 @@ export const StyledNav = styled.nav`
   padding: 0 1em;
 
   ul {
-    color: ${props => props.theme.grey};
     text-decoration: none;
     list-style: none;
     margin: 0;
@@ -33,9 +33,15 @@ export const StyledNav = styled.nav`
   }
 `;
 
-export const StyledLogoLink = styled.a`
+export const StyledLogoLink = styled(Link)`
+  text-decoration: none;
   font-family: 'Pacifico', 'Questrial', Helvetica;
   font-size: 1.4em;
   color: white;
   align-self: center;
+`;
+
+export const StyledNavLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => props.theme.white};
 `;

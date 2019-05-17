@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
-import { StyledNavbar, StyledNav, StyledLogoLink, Spacer } from './Styled';
+import {
+  StyledNavbar,
+  StyledNav,
+  StyledLogoLink,
+  StyledNavLink,
+  Spacer,
+} from './Styled';
 import TopDrawer from './TopDrawer/TopDrawer';
+import DrawerButton from './TopDrawer/DrawerButton/DrawerButton';
 
 /**
  * Navbar component. Supports mobile and desktop view.
@@ -18,6 +24,9 @@ const Navbar = () => {
       <>
         <StyledNav>
           <div>
+            <DrawerButton show={show} setShow={setShow} />
+          </div>
+          <div>
             <ul>
               <li>
                 <StyledLogoLink>Food App</StyledLogoLink>
@@ -27,9 +36,8 @@ const Navbar = () => {
           <Spacer />
           <div>
             <ul>
-              <li>Sign in</li>
               <li>
-                <button onClick={() => setShow(!show)}>Click</button>
+                <StyledNavLink to="/">Sign in</StyledNavLink>
               </li>
             </ul>
           </div>
@@ -49,16 +57,26 @@ const Navbar = () => {
             <li>
               <StyledLogoLink>Food App</StyledLogoLink>
             </li>
-            <li>Home</li>
-            <li>Create Event</li>
-            <li>About</li>
+            <li>
+              <StyledNavLink to="/">Home</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/">Create Event</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/">About</StyledNavLink>
+            </li>
           </ul>
         </div>
         <Spacer />
         <div>
           <ul>
-            <li>Sign in</li>
-            <li>Sign up</li>
+            <li>
+              <StyledNavLink to="/">Sign in</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/">Sign up</StyledNavLink>
+            </li>
           </ul>
         </div>
       </StyledNav>
