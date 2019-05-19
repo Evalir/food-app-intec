@@ -5,23 +5,19 @@ import { Context } from '../Store/Store';
 
 import FoodCard from '../Components/FoodCard/FoodCard';
 import Navbar from '../Components/Navbar/Navbar';
+
 const Header = styled.h3`
   font-family: 'Questrial', Helvetica;
   margin: 0 0 1em 0;
 `;
 
-export const CenteringWrapper = styled.div`
+const CenteringWrapper = styled.div`
   width: 80vw;
   margin: 0 auto;
   padding-top: 1em;
 `;
 
-export const Container = styled.div`
-  width: 80vw;
-  display: flex;
-  justify-content: center;
-`;
-export const Grid = styled.div`
+const Grid = styled.div`
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
@@ -40,13 +36,11 @@ export default function ViewEvents() {
       <Navbar />
       <CenteringWrapper>
         <Header>Events</Header>
-        <Container>
-          <Grid>
-            {state.events.map(event => (
-              <FoodCard key={event.name} name={event.name} />
-            ))}
-          </Grid>
-        </Container>
+        <Grid>
+          {state.events.map(event => (
+            <FoodCard key={event.name} name={event.name} />
+          ))}
+        </Grid>
       </CenteringWrapper>
     </>
   );
