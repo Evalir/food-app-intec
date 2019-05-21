@@ -28,8 +28,8 @@ const Grid = styled.div`
   }
 `;
 
-export default function ViewEvents() {
-  const { state, actions } = useContext(Context);
+const ViewEvents = () => {
+  const { state } = useContext(Context);
 
   return (
     <>
@@ -44,4 +44,6 @@ export default function ViewEvents() {
       </CenteringWrapper>
     </>
   );
-}
+};
+
+export default ViewEvents;

@@ -14,7 +14,7 @@ const CenteringWrapper = styled.div`
   padding-top: 1em;
 `;
 // TODO: Add Formik for form validation
-export default function CreateEvent() {
+const CreateEvent = () => {
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const buildings = ['AH', 'FD', 'AJ', 'DP'];
@@ -23,8 +23,8 @@ export default function CreateEvent() {
 
   function SubmitForm(e) {
     e.preventDefault();
-    //actions.CreateEvent({ name: eventName });
-    //setEventName('');
+    actions.CreateEvent({ name: eventName });
+    setEventName('');
     console.log(eventName, eventDescription, building);
   }
 
@@ -66,4 +66,6 @@ export default function CreateEvent() {
       </CenteringWrapper>
     </>
   );
-}
+};
+
+export default CreateEvent;
