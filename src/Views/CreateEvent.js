@@ -13,7 +13,7 @@ const CenteringWrapper = styled.div`
   margin: 0 auto;
   padding-top: 1em;
 `;
-// TODO: Add Formik for form validation
+
 const CreateEvent = () => {
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');

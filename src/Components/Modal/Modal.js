@@ -9,3 +9,5 @@ const Modal = ({ title, actions }) =>
     </div>,
     document.querySelector('#modal'),
   );
+
+export default Modal;
