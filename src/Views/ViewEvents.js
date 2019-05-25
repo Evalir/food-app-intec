@@ -25,7 +25,7 @@ const PageWrapper = styled.div`
 
 const Grid = styled.div`
   grid-area: content;
-  width: 80vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

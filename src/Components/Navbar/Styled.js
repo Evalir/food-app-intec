@@ -21,18 +21,26 @@ export const Nav = styled.nav`
   padding: 0 1em;
 `;
 
+export const UserWrapper = styled.div`
+  height: 64px;
+  width: 100%;
+  display: flex;
+`;
+
 export const UserPhoto = styled.div`
   display: inline-block;
   position: relative;
   width: 32px;
   height: 32px;
   border-radius: 4px;
+  margin: 1em 1em 0;
   background-color: ${props => props.theme.yellow};
 `;
 
 export const UserLink = styled(Link)`
   grid-area: user;
   display: inline-block;
+
   text-decoration: none;
   font-family: 'Rubik', Helvetica;
   font-size: 0.8em;
@@ -44,7 +52,7 @@ export const UserLink = styled(Link)`
 export const NavList = styled.ul`
   list-style: none;
   outline: none;
-  grid-area: nav_content;
+  width: 100%;
 `;
 
 export const ListItem = styled.li`
@@ -56,4 +64,7 @@ export const NavLink = styled(Link)`
   font-weight: bold;
   font-size: 24px;
   color: ${props => props.theme.lightpurple};
+  &:hover {
+    color: white;
+  }
 `;

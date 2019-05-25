@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   NavBar,
   Nav,
+  UserWrapper,
   UserLink,
   UserPhoto,
   NavList,
@@ -32,10 +33,10 @@ const Navbar = () => {
   return (
     <NavBar>
       <Nav>
-        <div>
+        <UserWrapper>
           <UserPhoto />
           <UserLink>Anonymous</UserLink>
-        </div>
+        </UserWrapper>
         <NavList>
           <ListItem>
             <NavLink>Home</NavLink>
