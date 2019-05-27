@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const Spacer = styled.div`
-  flex: 1;
-`;
-
 export const NavBar = styled.div`
   display: block;
   grid-area: content;

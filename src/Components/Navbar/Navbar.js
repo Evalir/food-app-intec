@@ -10,7 +10,6 @@ import {
   NavLink,
   NavBar,
   MobileNav,
-  Spacer,
 } from './Styled';
 
 import TopDrawer from './TopDrawer/TopDrawer';
