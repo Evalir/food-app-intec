@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  NavBar,
+  SideBar,
   Nav,
   UserWrapper,
   UserLink,
@@ -8,8 +8,13 @@ import {
   NavList,
   ListItem,
   NavLink,
+  NavBar,
+  MobileNav,
   Spacer,
 } from './Styled';
+
+import TopDrawer from './TopDrawer/TopDrawer';
+import DrawerButton from './DrawerButton';
 
 /**
  * Sidebar component. Supports mobile and desktop view.
@@ -30,8 +35,19 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleSizeChange);
   }, []);
 
+  if (isMobile) {
+    return (
+      <NavBar>
+        <MobileNav>
+          <DrawerButton setOpen={setShow} open={show} />
+        </MobileNav>
+        <TopDrawer show={show} />
+      </NavBar>
+    );
+  }
+
   return (
-    <NavBar>
+    <SideBar>
       <Nav>
         <UserWrapper>
           <UserPhoto />
@@ -46,7 +62,7 @@ const Navbar = () => {
           </ListItem>
         </NavList>
       </Nav>
-    </NavBar>
+    </SideBar>
   );
 };
 

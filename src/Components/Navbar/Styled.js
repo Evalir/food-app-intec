@@ -5,12 +5,28 @@ export const Spacer = styled.div`
   flex: 1;
 `;
 
-export const NavBar = styled.header`
+export const NavBar = styled.div`
+  display: block;
+  grid-area: content;
+  position: relative;
+  z-index: 200;
+  background-color: ${props => props.theme.darkpurple};
+  width: 100%;
+  height: 64px;
+`;
+
+export const MobileNav = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const SideBar = styled.header`
   position: relative;
   grid-area: sidebar;
   z-index: 200;
   background-color: ${props => props.theme.darkpurple};
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Nav = styled.nav`

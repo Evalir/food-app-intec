@@ -32,6 +32,7 @@ const Grid = styled.div`
   justify-content: flex-start;
   @media only screen and (max-width: 768px) {
     justify-content: center;
+    margin-top: 64px;
   }
 `;
 
