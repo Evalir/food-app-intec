@@ -10,14 +10,14 @@ export const Card = styled.div`
   border: 1px solid #ad9ebe;
   border-radius: 8px;
   background: white;
-  margin: 2px;
+  margin: 8px;
 `;
 
 export const ImageContainer = styled.div`
-  max-height: 150px;
+  max-height: 180px;
   width: 100%;
   border-radius: 7px 7px 0 0;
-  background: palevioletred;
+  background: transparent;
 `;
 
 export const FoodImage = styled.img`

@@ -1,53 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
+
 import styled from 'styled-components';
+import { Formik, Field, Form } from 'formik';
+
 import { Context } from '../Store/Store';
+
+import PageWrapper from '../Components/PageWrapper';
+import ContentWrapper from '../Components/ContentWrapper';
 import Navbar from '../Components/Navbar/Navbar';
 
-const PageWrapper = styled.div`
-  width: 100vw;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 20% 1fr 1fr 1fr;
-  grid-template-areas: 'sidebar content content content';
-  grid-gap: 20px;
-  @media only screen and (max-width: 990px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 'sidebar content content';
-  }
-  @media only screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'content';
-  }
-`;
-
-const CenteringWrapper = styled.div`
-  grid-area: content;
-  justify-self: center;
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-  padding-top: 1em;
-`;
+import Client from '../Utils/Client';
 
 const CreateEvent = () => {
-  const [eventName, setEventName] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
-  const buildings = ['AH', 'FD', 'AJ', 'DP'];
-  const [building, setBuilding] = useState(buildings[0]);
-  const { actions } = useContext(Context);
-
-  function SubmitForm(e) {
-    e.preventDefault();
-    actions.CreateEvent({ name: eventName });
-    setEventName('');
-    console.log(eventName, eventDescription, building);
-  }
-
+  const { state, actions } = useContext(Context);
+  useEffect(() => {
+    actions.fetchBuildings();
+  }, []);
   return (
     <>
       <PageWrapper>
         <Navbar />
-        <CenteringWrapper>Klk wawawa</CenteringWrapper>
+        <ContentWrapper>Klk wawawa</ContentWrapper>
       </PageWrapper>
     </>
   );

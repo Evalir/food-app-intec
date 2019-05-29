@@ -6,12 +6,17 @@ export function useActions(state, dispatch) {
    * Fetches events from API.
    */
   async function FetchEvents() {
-    const req = await Client.get('/');
-    console.log('API call succesfull:', req);
-    const events = req.data;
-    const newEventArray = [...events];
-    dispatch({ type: types.FETCH_EVENT, payload: newEventArray });
+    try {
+      const req = await Client.get('/');
+      console.log('API call succesfull:', req);
+      const events = req.data;
+      const newEventArray = [...events];
+      dispatch({ type: types.FETCH_EVENT, payload: newEventArray });
+    } catch {
+      throw new Error('Could not contact API');
+    }
   }
+
   /**
    * Creates an event and sends it to the API.
    * @param {Object} newEvent
@@ -22,6 +27,7 @@ export function useActions(state, dispatch) {
     console.log('dispatching new array:', newEventArray);
     dispatch({ type: types.CREATE_EVENT, payload: newEventArray });
   }
+
   /**
    * Deletes an event that belongs to the corresponding user.
    * @param {Object} eventToDelete
@@ -34,9 +40,21 @@ export function useActions(state, dispatch) {
     console.log('dispatching new array:', newEventArray);
     dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
   }
+
+  async function fetchBuildings() {
+    try {
+      const req = await Client.options('');
+      const data = req.data.actions.POST.building.choices;
+      dispatch({ type: types.FETCH_BUILDINGS, payload: data });
+    } catch {
+      throw new Error('Could not get API');
+    }
+  }
+
   return {
     FetchEvents,
     CreateEvent,
     DeleteEvent,
+    fetchBuildings,
   };
 }

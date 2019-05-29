@@ -28,7 +28,7 @@ export const SideBar = styled.header`
 export const Nav = styled.nav`
   height: 100%;
   display: grid;
-  grid-template-rows: [user] 10% [nav_content] 1fr [sign] 10%;
+  grid-template-rows: [user] 100px [nav_content] 1fr [sign] 100px;
   /* justify-items: center; */
   padding: 0 1em;
 `;
@@ -74,6 +74,7 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   font-size: 24px;
+  transition: all 0.1s;
   color: ${props => props.theme.lightpurple};
   &:hover {
     color: white;

@@ -30,7 +30,7 @@ const FoodCard = ({ key, name, description, imgUrl }) => {
 };
 
 FoodCard.defaultProps = {
-  name: 'name',
+  name: 'No name provided',
   description: 'No description provided.',
 };
 
