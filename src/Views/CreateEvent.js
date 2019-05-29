@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import styled from 'styled-components';
 import { Formik, Field, Form } from 'formik';
@@ -13,14 +13,24 @@ import Client from '../Utils/Client';
 
 const CreateEvent = () => {
   const { state, actions } = useContext(Context);
+  const [buildings, setBuildings] = useState([]);
   useEffect(() => {
-    actions.fetchBuildings();
+    async function fetchBuildings() {
+      const req = await Client.options('/');
+      const data = req.data.actions.POST.building.choices;
+      setBuildings(data);
+    }
+    fetchBuildings();
   }, []);
   return (
     <>
       <PageWrapper>
         <Navbar />
-        <ContentWrapper>Klk wawawa</ContentWrapper>
+        <ContentWrapper>
+          {buildings.map(building => (
+            <div>{building.value}</div>
+          ))}
+        </ContentWrapper>
       </PageWrapper>
     </>
   );
