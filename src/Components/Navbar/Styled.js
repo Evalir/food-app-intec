@@ -29,7 +29,7 @@ export const Nav = styled.nav`
   height: 100%;
   display: grid;
   grid-template-rows: [user] 10% [nav_content] 1fr [sign] 10%;
-  justify-items: center;
+  /* justify-items: center; */
   padding: 0 1em;
 `;
 
@@ -52,7 +52,6 @@ export const UserPhoto = styled.div`
 export const UserLink = styled(Link)`
   grid-area: user;
   display: inline-block;
-
   text-decoration: none;
   font-family: 'Rubik', Helvetica;
   font-size: 0.8em;

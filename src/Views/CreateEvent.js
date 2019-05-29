@@ -3,13 +3,28 @@ import styled from 'styled-components';
 import { Context } from '../Store/Store';
 import Navbar from '../Components/Navbar/Navbar';
 
-const Header = styled.h3`
-  font-family: 'Helvetica';
-  line-height: 2em;
+const PageWrapper = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 1fr 1fr 1fr;
+  grid-template-areas: 'sidebar content content content';
+  grid-gap: 20px;
+  @media only screen and (max-width: 990px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'sidebar content content';
+  }
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'content';
+  }
 `;
 
 const CenteringWrapper = styled.div`
-  width: 80vw;
+  grid-area: content;
+  justify-self: center;
+  width: 80%;
+  height: 100%;
   margin: 0 auto;
   padding-top: 1em;
 `;
@@ -30,40 +45,10 @@ const CreateEvent = () => {
 
   return (
     <>
-      <Navbar />
-      <CenteringWrapper>
-        <Header>Create Event</Header>
-        <form onSubmit={SubmitForm}>
-          <div>
-            <label>Event Title: </label>
-            <input
-              type="text"
-              value={eventName}
-              onChange={e => setEventName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Event Description: </label>
-            <textarea
-              value={eventDescription}
-              onChange={e => setEventDescription(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Building</label>
-            <select
-              name="buildings"
-              value={building}
-              onChange={e => setBuilding(e.target.value)}
-            >
-              {buildings.map(building => (
-                <option value={building}>{building}</option>
-              ))}
-            </select>
-          </div>
-          <button type="button">Submit</button>
-        </form>
-      </CenteringWrapper>
+      <PageWrapper>
+        <Navbar />
+        <CenteringWrapper>Klk wawawa</CenteringWrapper>
+      </PageWrapper>
     </>
   );
 };

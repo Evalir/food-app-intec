@@ -50,14 +50,14 @@ const Navbar = () => {
       <Nav>
         <UserWrapper>
           <UserPhoto />
-          <UserLink>Anonymous</UserLink>
+          <UserLink to="/">Anonymous</UserLink>
         </UserWrapper>
         <NavList>
           <ListItem>
-            <NavLink>Home</NavLink>
+            <NavLink to="/">Home</NavLink>
           </ListItem>
           <ListItem>
-            <NavLink>Create Event</NavLink>
+            <NavLink to="/create">Create Event</NavLink>
           </ListItem>
         </NavList>
       </Nav>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { Context } from '../Store/Store';
@@ -30,6 +30,7 @@ const Grid = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 0.5em;
   @media only screen and (max-width: 768px) {
     justify-content: center;
     margin-top: 64px;
@@ -37,7 +38,11 @@ const Grid = styled.div`
 `;
 
 const ViewEvents = () => {
-  const { state } = useContext(Context);
+  const { state, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.FetchEvents();
+  }, []);
 
   return (
     <>
@@ -45,7 +50,11 @@ const ViewEvents = () => {
         <Navbar />
         <Grid>
           {state.events.map(event => (
-            <FoodCard key={event.name} name={event.name} />
+            <FoodCard
+              key={event.url}
+              name={event.title}
+              description={event.description}
+            />
           ))}
         </Grid>
       </PageWrapper>

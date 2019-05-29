@@ -2,48 +2,61 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Card = styled.div`
-  min-height: 300px;
-  width: 200px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 30% 1fr;
+  min-height: 310px;
+  width: 225px;
+  border: 1px solid #ad9ebe;
   border-radius: 8px;
   background: white;
   margin: 2px;
 `;
 
 export const ImageContainer = styled.div`
-  min-height: 120px;
+  max-height: 150px;
   width: 100%;
-  border-radius: 8px 8px 0 0;
+  border-radius: 7px 7px 0 0;
   background: palevioletred;
+`;
+
+export const FoodImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 7px 7px 0 0;
+  object-fit: cover;
 `;
 
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
+  height: 100%;
   margin: 0 auto;
-  padding-top: 1em;
+  padding-top: 8px;
 `;
 
 export const FoodTitle = styled.h2`
+  font-size: 1em;
   line-height: 2em;
 `;
 
 export const FoodLink = styled(Link)`
-  display: block;
-  margin-top: 40px;
-  padding: 0 auto;
-  color: palevioletred;
-  background: transparent;
-  border: 3px solid palevioletred;
-  border-radius: 3px;
+  position: absolute;
+  bottom: 5%;
+  color: white;
+  text-transform: uppercase;
+  background: linear-gradient(130.77deg, #302939 -33.61%, #221d27 141.74%);
+  box-shadow: 0px 4px 12px rgba(139, 99, 190, 0.3);
+  border-radius: 4px;
   text-align: center;
-  font-size: 1em;
   width: 100px;
+  line-height: 32px;
   align-self: center;
   text-decoration: none;
   transition: all 0.2s;
   :hover {
     color: white;
-    background: palevioletred;
+    transform: translateY(-10%);
   }
 `;
