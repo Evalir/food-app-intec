@@ -1,20 +1,32 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+
+const flowIn = keyframes`
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`;
 
 export const Card = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: 30% 1fr;
+  grid-template-rows: 40% 1fr;
   min-height: 310px;
   width: 225px;
   border: 1px solid #ad9ebe;
   border-radius: 8px;
   background: white;
   margin: 8px;
+  animation: ${flowIn} 0.5s ease;
 `;
 
 export const ImageContainer = styled.div`
-  max-height: 180px;
+  max-height: 100%;
   width: 100%;
   border-radius: 7px 7px 0 0;
   background: transparent;

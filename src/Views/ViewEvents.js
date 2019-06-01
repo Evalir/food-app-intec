@@ -29,20 +29,18 @@ const ViewEvents = () => {
   }, []);
 
   return (
-    <>
-      <PageWrapper>
-        <Navbar />
-        <Grid>
-          {state.events.map(event => (
-            <FoodCard
-              key={event.url}
-              name={event.title}
-              description={event.description}
-            />
-          ))}
-        </Grid>
-      </PageWrapper>
-    </>
+    <PageWrapper>
+      <Navbar />
+      <Grid>
+        {state.events.map(event => (
+          <FoodCard
+            key={event.url}
+            name={event.title}
+            description={event.description}
+          />
+        ))}
+      </Grid>
+    </PageWrapper>
   );
 };
 

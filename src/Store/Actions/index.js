@@ -1,6 +1,13 @@
 import { types } from '../StoreConfig';
 import Client from '../../Utils/Client';
 
+/**
+ * Custom hook for actions.
+ * @param {any} state
+ * Current state passed in.
+ * @param {function} dispatch
+ * Dispatch function to dispatch actions.
+ */
 export function useActions(state, dispatch) {
   /**
    * Fetches events from API.
@@ -41,20 +48,9 @@ export function useActions(state, dispatch) {
     dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
   }
 
-  async function fetchBuildings() {
-    try {
-      const req = await Client.options('');
-      const data = req.data.actions.POST.building.choices;
-      dispatch({ type: types.FETCH_BUILDINGS, payload: data });
-    } catch {
-      throw new Error('Could not get API');
-    }
-  }
-
   return {
     FetchEvents,
     CreateEvent,
     DeleteEvent,
-    fetchBuildings,
   };
 }
