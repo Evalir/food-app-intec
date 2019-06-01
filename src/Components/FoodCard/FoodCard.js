@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Card,
   ImageContainer,
@@ -8,7 +10,7 @@ import {
   FoodLink,
 } from './Styled';
 
-const FoodCard = ({ key, name, description, imgUrl }) => {
+const FoodCard = ({ cardKey, name, description, imgUrl }) => {
   const newName = name.length > 25 ? name.substring(0, 20) + '...' : name;
   const newDescription =
     description.length > 50
@@ -16,9 +18,9 @@ const FoodCard = ({ key, name, description, imgUrl }) => {
       : description;
 
   return (
-    <Card key={key}>
+    <Card key={cardKey}>
       <ImageContainer>
-        <FoodImage src="https://source.unsplash.com/random/250x200?food" />
+        <FoodImage src={imgUrl} />
       </ImageContainer>
       <InfoWrapper>
         <FoodTitle>{newName}</FoodTitle>
@@ -29,9 +31,18 @@ const FoodCard = ({ key, name, description, imgUrl }) => {
   );
 };
 
+FoodCard.propTypes = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  imgUrl: PropTypes.string,
+  linkTo: PropTypes.string,
+};
+
 FoodCard.defaultProps = {
   name: 'No name provided',
   description: 'No description provided.',
+  imgUrl: 'https://source.unsplash.com/random/250x200?food',
+  linkTo: '/',
 };
 
 export default FoodCard;

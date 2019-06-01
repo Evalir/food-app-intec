@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import styled from 'styled-components';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import moment from 'moment';
 import * as Yup from 'yup';
-
 import { Context } from '../Store/Store';
 
 import PageWrapper from '../Components/PageWrapper';
@@ -48,7 +48,17 @@ const CreateEvent = () => {
   }, []);
 
   function handleSubmit(values) {
-    console.log(values);
+    const newHour = +values.hour < 10 ? '0' + values.hour : values.hour;
+    const newMinutes =
+      +values.minutes < 10 ? '0' + values.minutes : values.minutes;
+    const date = moment(newHour + ':' + newMinutes, 'HH:mm');
+    const valuesObject = {
+      name: values.name,
+      description: values.description,
+      building: values.building,
+      time: date.toDate(),
+    };
+    console.log(valuesObject);
   }
 
   return (
@@ -58,13 +68,19 @@ const CreateEvent = () => {
         <h1>Create Event</h1>
         <Formik
           validationSchema={CreateEventSchema}
-          onSubmit={(values, actions) => handleSubmit(values)}
-          render={({ errors, status, touched, isSubmitting }) => (
+          onSubmit={values => handleSubmit(values)}
+          render={({ status, isSubmitting }) => (
             <Form>
               {/* Event name field */}
+              <label htmlFor="name" style={{ display: 'block' }}>
+                Event Name
+              </label>
               <StyledField type="name" name="name" />
               <ErrorMessage name="name" component="div" />
               {/* Event description field */}
+              <label htmlFor="name" style={{ display: 'block' }}>
+                Event Description
+              </label>
               <StyledField type="text" className="error" name="description" />
               <ErrorMessage name="description" component="div" />
               {/* Building selection field */}
@@ -75,7 +91,24 @@ const CreateEvent = () => {
                   </option>
                 ))}
               </StyledField>
-              <ErrorMessage name="building" component="div" />
+              <Field component="select" name="hour">
+                {[...Array(12).keys()]
+                  .map(x => x + 1)
+                  .map(opt => (
+                    <option value={opt} key={opt}>
+                      {opt}
+                    </option>
+                  ))}
+              </Field>
+              <Field component="select" name="minutes">
+                {[...Array(60).keys()]
+                  .map(x => x + 1)
+                  .map(opt => (
+                    <option value={opt} key={opt}>
+                      {opt}
+                    </option>
+                  ))}
+              </Field>
               {/* Form status message */}
               {status && status.msg && <div>{status.msg}</div>}
               <FoodButton type="submit" disabled={isSubmitting}>
