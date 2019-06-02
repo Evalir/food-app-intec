@@ -5,11 +5,11 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case types.FETCH_EVENT:
     case types.CREATE_EVENT:
     case types.DELETE_EVENT:
-      return { ...state, events: action.payload };
+      return { ...state, events: action.payload, loading: false };
     case types.UPDATE_EVENT:
       throw new Error('Unexpected Action');
     case types.FETCH_BUILDINGS:
-      return { ...state, buildings: action.payload };
+      return { ...state, buildings: action.payload, loading: false };
     default:
       return { ...state };
   }

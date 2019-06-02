@@ -48,10 +48,7 @@ const CreateEvent = () => {
   }, []);
 
   function handleSubmit(values) {
-    const newHour = +values.hour < 10 ? '0' + values.hour : values.hour;
-    const newMinutes =
-      +values.minutes < 10 ? '0' + values.minutes : values.minutes;
-    const date = moment(newHour + ':' + newMinutes, 'HH:mm');
+    const date = moment(values.hour + ':' + values.minutes, 'HH:mm');
     const valuesObject = {
       name: values.name,
       description: values.description,
@@ -96,7 +93,7 @@ const CreateEvent = () => {
                   .map(x => x + 1)
                   .map(opt => (
                     <option value={opt} key={opt}>
-                      {opt}
+                      {+opt < 10 ? '0' + opt : opt}
                     </option>
                   ))}
               </Field>
@@ -105,7 +102,7 @@ const CreateEvent = () => {
                   .map(x => x + 1)
                   .map(opt => (
                     <option value={opt} key={opt}>
-                      {opt}
+                      {+opt < 10 ? '0' + opt : opt}
                     </option>
                   ))}
               </Field>

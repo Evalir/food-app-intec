@@ -4,9 +4,12 @@ export const types = {
   DELETE_EVENT: 'DELETE_EVENT',
   UPDATE_EVENT: 'UPDATE_EVENT',
   FETCH_BUILDINGS: 'FETCH_BUILDINGS',
+  LOADING_START: 'LOADING_START',
+  LOADING_STOP: 'LOADING_STOP',
 };
 
 export const INITIAL_STATE = {
   isSignedIn: false,
   events: [],
+  loading: false,
 };

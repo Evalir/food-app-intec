@@ -14,10 +14,12 @@ export function useActions(state, dispatch) {
    */
   async function FetchEvents() {
     try {
+      dispatch({ type: types.LOADING_START });
       const req = await Client.get('/');
       console.log('API call succesfull:', req);
       const events = req.data;
       const newEventArray = [...events];
+      setTimeout(() => console.log('loaded'), 1000);
       dispatch({ type: types.FETCH_EVENT, payload: newEventArray });
     } catch {
       throw new Error('Could not contact API');

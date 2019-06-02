@@ -26,6 +26,10 @@ export const Card = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   max-height: 100%;
   width: 100%;
   border-radius: 7px 7px 0 0;

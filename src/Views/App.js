@@ -10,6 +10,7 @@ import StateProvider from '../Store/Store';
 import WaitingComponent from '../Components/WaitingComponent';
 // Views
 const ViewEvents = lazy(() => import('./ViewEvents'));
+const ViewEvent = lazy(() => import('./ViewEvent'));
 const CreateEvent = lazy(() => import('./CreateEvent'));
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
               exact
               component={WaitingComponent(CreateEvent)}
             />
+            <Route path="/:id" exact component={WaitingComponent(ViewEvent)} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

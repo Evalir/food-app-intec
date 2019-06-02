@@ -23,7 +23,6 @@ const Grid = styled.div`
 
 const ViewEvents = () => {
   const { state, actions } = useContext(Context);
-
   useEffect(() => {
     actions.FetchEvents();
   }, []);
@@ -37,7 +36,7 @@ const ViewEvents = () => {
             key={event.url}
             name={event.title}
             description={event.description}
-            linkTo={event.url}
+            linkTo={event.url.substr(event.url.length - 3)}
           />
         ))}
       </Grid>
