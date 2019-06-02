@@ -1,40 +1,13 @@
 import React from 'react';
 
-import styled from 'styled-components';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import FoodButton from '../FoodButton';
 import Alert from '../Alert';
 
-const StyledField = styled(Field)`
-  display: block;
-  width: 100%;
-  height: 32px;
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-  margin-bottom: 1em;
-`;
-
-const Event = styled.div`
-  border: 1px solid #ced4da;
-  border-radius: 8px;
-  box-shadow: 5px 0px 27px 1px rgba(149, 135, 164, 0.48);
-  margin: 0 auto;
-  padding: 1em;
-  width: 300px;
-`;
-
-const Label = styled.label`
-  margin-bottom: 0.5em;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import { StyledField, Label, ButtonWrapper } from './Styled';
+import EventCard from '../EventCard';
 
 const CreateEventSchema = new Yup.object().shape({
   name: Yup.string()
@@ -51,7 +24,7 @@ const CreateEventSchema = new Yup.object().shape({
 });
 
 const EventForm = ({ buildings, handleSubmit }) => (
-  <Event>
+  <EventCard>
     <h1>Add an event!</h1>
     <Formik
       validationSchema={CreateEventSchema}
@@ -116,7 +89,7 @@ const EventForm = ({ buildings, handleSubmit }) => (
         </Form>
       )}
     />
-  </Event>
+  </EventCard>
 );
 
 export default EventForm;

@@ -22,6 +22,20 @@ export function useActions(state, dispatch) {
       throw new Error('Could not contact API');
     }
   }
+  /**
+   * Fetches a single event from the API.
+   * @param {string} id
+   * the id of the event to fetch.
+   */
+  async function FetchSingleEvent(id) {
+    try {
+      const req = await Client.get(`/${id}`);
+      const event = req.data;
+      dispatch({ type: types.FETCH_EVENT, payload: event });
+    } catch (err) {
+      throw new Error('Could not contact API', err);
+    }
+  }
 
   /**
    * Creates an event and sends it to the API.
@@ -33,8 +47,8 @@ export function useActions(state, dispatch) {
     try {
       await Client.post('/', newEvent);
       dispatch({ type: types.CREATE_EVENT });
-    } catch (error) {
-      throw new Error('Could not contact API', error);
+    } catch (err) {
+      throw new err('Could not contact API', err);
     }
   }
 
@@ -52,6 +66,7 @@ export function useActions(state, dispatch) {
 
   return {
     FetchEvents,
+    FetchSingleEvent,
     CreateEvent,
     DeleteEvent,
   };

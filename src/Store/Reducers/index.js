@@ -3,7 +3,7 @@ import { types, INITIAL_STATE } from '../StoreConfig';
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.FETCH_EVENT:
-      return { ...state, event: action.payload, loading: false };
+      return { ...state, currentEvent: action.payload, loading: false };
     case types.FETCH_EVENTS:
       return { ...state, events: action.payload, loading: false };
     case types.CREATE_EVENT:

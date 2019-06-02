@@ -36,7 +36,7 @@ const ViewEvents = () => {
             key={event.url}
             name={event.title}
             description={event.description}
-            linkTo={event.url.substr(event.url.length - 3)}
+            linkTo={`/${event.url.substr(event.url.length - 3)}`}
           />
         ))}
       </Grid>
