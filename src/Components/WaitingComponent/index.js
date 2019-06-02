@@ -14,6 +14,7 @@ const LoaderDiv = () => (
     <Loader type="ThreeDots" color="palevioletred" height={80} width={80} />
   </div>
 );
+
 const WaitingComponent = Component => {
   return props => (
     <Suspense fallback={<LoaderDiv />}>

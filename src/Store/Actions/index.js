@@ -14,13 +14,10 @@ export function useActions(state, dispatch) {
    */
   async function FetchEvents() {
     try {
-      dispatch({ type: types.LOADING_START });
       const req = await Client.get('/');
-      console.log('API call succesfull:', req);
       const events = req.data;
       const newEventArray = [...events];
-      setTimeout(() => console.log('loaded'), 1000);
-      dispatch({ type: types.FETCH_EVENT, payload: newEventArray });
+      dispatch({ type: types.FETCH_EVENTS, payload: newEventArray });
     } catch {
       throw new Error('Could not contact API');
     }
@@ -31,10 +28,14 @@ export function useActions(state, dispatch) {
    * @param {Object} newEvent
    * Event that will be created on API call.
    * */
-  function CreateEvent(newEvent) {
-    const newEventArray = [...state.events, newEvent];
-    console.log('dispatching new array:', newEventArray);
-    dispatch({ type: types.CREATE_EVENT, payload: newEventArray });
+  async function CreateEvent(newEvent) {
+    dispatch({ type: types.LOADING_START });
+    try {
+      await Client.post('/', newEvent);
+      dispatch({ type: types.CREATE_EVENT });
+    } catch (error) {
+      throw new Error('Could not contact API', error);
+    }
   }
 
   /**
@@ -46,7 +47,6 @@ export function useActions(state, dispatch) {
     const newEventArray = state.events.filter(
       event => event.name !== eventToDelete.name,
     );
-    console.log('dispatching new array:', newEventArray);
     dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
   }
 
