@@ -47,7 +47,7 @@ const EventForm = ({ buildings, handleSubmit }) => (
           <StyledField type="text" name="description" />
           <ErrorMessage name="description" component={Alert} />
           {/* Building selection field */}
-          <Label htmlFor="name" style={{ display: 'block' }}>
+          <Label htmlFor="building" style={{ display: 'block' }}>
             Event Building
           </Label>
           <StyledField component="select" name="building">
@@ -58,7 +58,7 @@ const EventForm = ({ buildings, handleSubmit }) => (
             ))}
           </StyledField>
           {/* datetime component */}
-          <Label htmlFor="name" style={{ display: 'block' }}>
+          <Label htmlFor="hour" style={{ display: 'block' }}>
             End time (HH:mm)
           </Label>
           <Field component="select" name="hour">

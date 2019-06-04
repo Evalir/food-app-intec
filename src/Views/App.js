@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
+
 import History from '../Utils/History';
+
 // Theme
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../Styled/Theme';
@@ -12,7 +14,7 @@ import WaitingComponent from '../Components/WaitingComponent';
 const ViewEvents = lazy(() => import('./ViewEvents'));
 const ViewEvent = lazy(() => import('./ViewEvent'));
 const CreateEvent = lazy(() => import('./CreateEvent'));
-const Login = lazy(() => import('./LogIn'));
+const LogIn = lazy(() => import('./LogIn'));
 
 const App = () => {
   return (
@@ -20,7 +22,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Router history={History}>
           <Switch>
-            <Route path="/login" exact component={WaitingComponent(Login)} />
+            <Route path="/login" exact component={WaitingComponent(LogIn)} />
             <Route
               path="/create"
               exact

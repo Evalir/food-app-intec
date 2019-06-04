@@ -69,11 +69,11 @@ export function useActions(state, dispatch) {
     dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
   }
 
-  function LogIn(userInfo) {
-    const success = Auth.logIn(userInfo);
+  async function LogIn(credentials) {
+    const { success, username } = await Auth.logIn(credentials);
     if (success) {
       History.push('/');
-      dispatch({ type: types.LOGGED_IN });
+      dispatch({ type: types.LOG_IN, payload: username });
     } else {
       console.log('error when logging in');
       dispatch({ type: 'ERROR' });
@@ -81,10 +81,19 @@ export function useActions(state, dispatch) {
   }
 
   function LogOut() {
-    const success = Auth.LogOut();
+    const success = Auth.logOut();
     if (success) {
       History.push('/');
+      dispatch({ type: types.LOG_OUT });
     }
+  }
+
+  function SetLoggedIn() {
+    dispatch({ type: types.IS_LOGGED_IN });
+  }
+
+  function SetLoggedOut() {
+    dispatch({ type: types.IS_LOGGED_OUT });
   }
 
   return {
@@ -93,5 +102,8 @@ export function useActions(state, dispatch) {
     CreateEvent,
     DeleteEvent,
     LogIn,
+    LogOut,
+    SetLoggedIn,
+    SetLoggedOut,
   };
 }

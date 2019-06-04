@@ -18,13 +18,11 @@ const ViewEvent = ({ match }) => {
       <Navbar />
       <ContentWrapper>
         <EventCard>
-          {<h1>{state.currentEvent.title}</h1>}
-          {
-            <p>{`${moment(state.currentEvent.start).format(
-              'hh:mm',
-            )} -> ${moment(state.currentEvent.end).format('hh:mm')}`}</p>
-          }
-          {<p>{state.currentEvent.description}</p>}
+          <h1>{state.currentEvent.title}</h1>
+          <p>{`${moment(state.currentEvent.start).format('hh:mm')} -> ${moment(
+            state.currentEvent.end,
+          ).format('hh:mm')}`}</p>
+          <p>{state.currentEvent.description}</p>
         </EventCard>
       </ContentWrapper>
     </PageWrapper>

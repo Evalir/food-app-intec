@@ -11,18 +11,23 @@ export default class Auth {
   static logIn = async ({ username, password }) => {
     try {
       const req = await Client.post('/api-token-auth/', { username, password });
+      console.log(req.status);
       if (req.status === 200) {
         const token = req.data.token;
         this.setToken(token);
         console.log(token);
-        return true;
+        return { success: true, username };
+      } else {
+        return false;
       }
-      return false;
     } catch (e) {
       console.log(e);
     }
   };
 
+  /**
+   * Logs the user out by removing the token.
+   */
   static logOut = () => {
     this.destroyToken();
     return true;
@@ -56,8 +61,12 @@ export default class Auth {
     }
   };
 
+  /**
+   * Checks if user is logged in through the Token in localStorage.
+   */
   static isLoggedIn = () => {
     const token = this.getToken();
+    console.log(!!token, 'alo?');
     return !!token;
   };
 
@@ -70,9 +79,13 @@ export default class Auth {
     localStorage.setItem('user_token', token);
   };
 
+  /**
+   * Remove token from localStorage.
+   */
   static destroyToken = () => {
     localStorage.removeItem('user_token');
   };
+
   /**
    * Gets the token from localStorage.
    */

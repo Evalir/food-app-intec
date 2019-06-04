@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { Context } from '../Store/Store';
 
@@ -7,14 +7,11 @@ import ContentWrapper from '../Components/ContentWrapper';
 import Navbar from '../Components/Navbar/Navbar';
 import LogInForm from '../Components/LogInForm';
 
-// Login-protected Component
-const CreateEvent = () => {
+const LogIn = () => {
   const { actions } = useContext(Context);
-  // Fetch buildings
-  useEffect(() => {}, []);
 
-  function handleSubmit(stuff) {
-    actions.LogIn(stuff);
+  function handleSubmit(credentials) {
+    actions.LogIn(credentials);
   }
 
   return (
@@ -27,4 +24,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default LogIn;

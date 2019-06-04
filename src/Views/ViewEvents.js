@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
+import Auth from '../Utils/Auth';
 import { Context } from '../Store/Store';
 
 import PageWrapper from '../Components/PageWrapper';
 import FoodCard from '../Components/FoodCard/FoodCard';
 import Navbar from '../Components/Navbar/Navbar';
-
-import Auth from '../Utils/Auth';
 
 const Grid = styled.div`
   grid-area: content;
@@ -25,8 +24,16 @@ const Grid = styled.div`
 
 const ViewEvents = () => {
   const { state, actions } = useContext(Context);
+
   useEffect(() => {
     actions.FetchEvents();
+    if (!Auth.isLoggedIn()) {
+      actions.SetLoggedOut();
+      console.log('logged out');
+    } else {
+      actions.SetLoggedIn();
+      console.log('logged in :)');
+    }
   }, []);
 
   return (
