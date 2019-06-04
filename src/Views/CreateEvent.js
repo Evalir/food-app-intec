@@ -17,7 +17,7 @@ const CreateEvent = () => {
   // Fetch buildings
   useEffect(() => {
     async function fetchBuildings() {
-      const req = await Client.options('/');
+      const req = await Client.options('/api/event/');
       const data = req.data.actions.POST.building.choices;
       setBuildings(data);
     }

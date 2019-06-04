@@ -14,6 +14,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
       throw new Error('Unexpected Action');
     case types.FETCH_BUILDINGS:
       return { ...state, buildings: action.payload, loading: false };
+    case types.LOGGED_IN:
+      return { ...state };
     default:
       return { ...state };
   }

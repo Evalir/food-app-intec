@@ -8,13 +8,24 @@ export default class Auth {
    * @param {string} password
    * User's password.
    */
-  static logIn = async (username, password) => {
-    const req = await Client.post('/api-token-auth/', { username, password });
-    if (req.status === 200) {
-      const token = req.data.token;
-      this.setToken(token);
-      History.push('/');
+  static logIn = async ({ username, password }) => {
+    try {
+      const req = await Client.post('/api-token-auth/', { username, password });
+      if (req.status === 200) {
+        const token = req.data.token;
+        this.setToken(token);
+        console.log(token);
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.log(e);
     }
+  };
+
+  static logOut = () => {
+    this.destroyToken();
+    return true;
   };
 
   /**
@@ -58,10 +69,14 @@ export default class Auth {
   static setToken = token => {
     localStorage.setItem('user_token', token);
   };
+
+  static destroyToken = () => {
+    localStorage.removeItem('user_token');
+  };
   /**
    * Gets the token from localStorage.
    */
   static getToken = () => {
-    localStorage.getItem('user_token');
+    return localStorage.getItem('user_token');
   };
 }

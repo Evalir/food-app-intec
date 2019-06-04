@@ -12,6 +12,7 @@ import WaitingComponent from '../Components/WaitingComponent';
 const ViewEvents = lazy(() => import('./ViewEvents'));
 const ViewEvent = lazy(() => import('./ViewEvent'));
 const CreateEvent = lazy(() => import('./CreateEvent'));
+const Login = lazy(() => import('./LogIn'));
 
 const App = () => {
   return (
@@ -19,11 +20,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Router history={History}>
           <Switch>
-            <Route
-              path="/login"
-              exact
-              component={WaitingComponent(ViewEvents)}
-            />
+            <Route path="/login" exact component={WaitingComponent(Login)} />
             <Route
               path="/create"
               exact

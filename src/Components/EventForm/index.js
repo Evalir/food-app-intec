@@ -38,13 +38,13 @@ const EventForm = ({ buildings, handleSubmit }) => (
           <Label htmlFor="name" style={{ display: 'block' }}>
             Event Name
           </Label>
-          <StyledField type="name" name="name" />
+          <StyledField type="text" name="name" />
           <ErrorMessage name="name" component={Alert} />
           {/* Event description field */}
-          <Label htmlFor="name" style={{ display: 'block' }}>
+          <Label htmlFor="description" style={{ display: 'block' }}>
             Event Description
           </Label>
-          <StyledField type="text" className="error" name="description" />
+          <StyledField type="text" name="description" />
           <ErrorMessage name="description" component={Alert} />
           {/* Building selection field */}
           <Label htmlFor="name" style={{ display: 'block' }}>

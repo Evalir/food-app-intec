@@ -1,6 +1,7 @@
 import { types } from '../StoreConfig';
 import Client from '../../Utils/Client';
 import Auth from '../../Utils/Auth';
+import History from '../../Utils/History';
 /**
  * Custom hook for actions.
  * @param {any} state
@@ -44,9 +45,12 @@ export function useActions(state, dispatch) {
    * */
   async function CreateEvent(newEvent) {
     try {
-      await Client.post('/', newEvent, {
-        Authorization: `Token ${Auth.getToken()}`,
+      const req = await Client.post('/api/event/', newEvent, {
+        headers: {
+          Authorization: `Token ${Auth.getToken()}`,
+        },
       });
+      console.log(req.status);
       dispatch({ type: types.CREATE_EVENT });
     } catch (err) {
       throw new err('Could not contact API', err);
@@ -65,10 +69,29 @@ export function useActions(state, dispatch) {
     dispatch({ type: types.DELETE_EVENT, payload: newEventArray });
   }
 
+  function LogIn(userInfo) {
+    const success = Auth.logIn(userInfo);
+    if (success) {
+      History.push('/');
+      dispatch({ type: types.LOGGED_IN });
+    } else {
+      console.log('error when logging in');
+      dispatch({ type: 'ERROR' });
+    }
+  }
+
+  function LogOut() {
+    const success = Auth.LogOut();
+    if (success) {
+      History.push('/');
+    }
+  }
+
   return {
     FetchEvents,
     FetchSingleEvent,
     CreateEvent,
     DeleteEvent,
+    LogIn,
   };
 }
