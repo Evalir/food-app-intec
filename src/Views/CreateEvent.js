@@ -3,12 +3,14 @@ import moment from 'moment';
 
 import { Context } from '../Store/Store';
 
+import withAuth from '../Components/withAuth';
 import PageWrapper from '../Components/PageWrapper';
 import ContentWrapper from '../Components/ContentWrapper';
 import Navbar from '../Components/Navbar/Navbar';
 import EventForm from '../Components/EventForm';
 import Client from '../Utils/Client';
 
+// Login-protected Component
 const CreateEvent = () => {
   const { actions } = useContext(Context);
   const [buildings, setBuildings] = useState([]);
@@ -45,4 +47,4 @@ const CreateEvent = () => {
   );
 };
 
-export default CreateEvent;
+export default withAuth(CreateEvent);

@@ -7,6 +7,8 @@ import PageWrapper from '../Components/PageWrapper';
 import FoodCard from '../Components/FoodCard/FoodCard';
 import Navbar from '../Components/Navbar/Navbar';
 
+import Auth from '../Utils/Auth';
+
 const Grid = styled.div`
   grid-area: content;
   width: 100%;

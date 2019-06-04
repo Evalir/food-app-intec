@@ -10,8 +10,9 @@ export const types = {
 };
 
 export const INITIAL_STATE = {
-  isSignedIn: false,
   events: [],
   currentEvent: {},
   loading: false,
+  isSignedIn: false,
+  username: '',
 };

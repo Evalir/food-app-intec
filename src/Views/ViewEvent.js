@@ -7,10 +7,10 @@ import ContentWrapper from '../Components/ContentWrapper';
 import Navbar from '../Components/Navbar/Navbar';
 import EventCard from '../Components/EventCard';
 
-const ViewEvent = props => {
+const ViewEvent = ({ match }) => {
   const { state, actions } = useContext(Context);
   useEffect(() => {
-    actions.FetchSingleEvent(props.match.params.id);
+    actions.FetchSingleEvent(match.params.id);
   }, []);
 
   return (

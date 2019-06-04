@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+import { Router, Route, Switch } from 'react-router-dom';
+import History from '../Utils/History';
 // Theme
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../Styled/Theme';
@@ -17,17 +17,22 @@ const App = () => {
   return (
     <StateProvider>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <Router history={History}>
           <Switch>
-            <Route path="/" exact component={WaitingComponent(ViewEvents)} />
+            <Route
+              path="/login"
+              exact
+              component={WaitingComponent(ViewEvents)}
+            />
             <Route
               path="/create"
               exact
               component={WaitingComponent(CreateEvent)}
             />
+            <Route path="/" exact component={WaitingComponent(ViewEvents)} />
             <Route path="/:id" exact component={WaitingComponent(ViewEvent)} />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </ThemeProvider>
     </StateProvider>
   );

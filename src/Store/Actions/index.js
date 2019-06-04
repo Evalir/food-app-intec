@@ -1,6 +1,6 @@
 import { types } from '../StoreConfig';
 import Client from '../../Utils/Client';
-
+import Auth from '../../Utils/Auth';
 /**
  * Custom hook for actions.
  * @param {any} state
@@ -14,7 +14,7 @@ export function useActions(state, dispatch) {
    */
   async function FetchEvents() {
     try {
-      const req = await Client.get('/');
+      const req = await Client.get('/api/event/');
       const events = req.data;
       const newEventArray = [...events];
       dispatch({ type: types.FETCH_EVENTS, payload: newEventArray });
@@ -29,7 +29,7 @@ export function useActions(state, dispatch) {
    */
   async function FetchSingleEvent(id) {
     try {
-      const req = await Client.get(`/${id}`);
+      const req = await Client.get(`/event/${id}`);
       const event = req.data;
       dispatch({ type: types.FETCH_EVENT, payload: event });
     } catch (err) {
@@ -43,9 +43,10 @@ export function useActions(state, dispatch) {
    * Event that will be created on API call.
    * */
   async function CreateEvent(newEvent) {
-    dispatch({ type: types.LOADING_START });
     try {
-      await Client.post('/', newEvent);
+      await Client.post('/', newEvent, {
+        Authorization: `Token ${Auth.getToken()}`,
+      });
       dispatch({ type: types.CREATE_EVENT });
     } catch (err) {
       throw new err('Could not contact API', err);
