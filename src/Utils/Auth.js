@@ -11,11 +11,9 @@ export default class Auth {
   static logIn = async ({ username, password }) => {
     try {
       const req = await Client.post('/api-token-auth/', { username, password });
-      console.log(req.status);
       if (req.status === 200) {
         const token = req.data.token;
         this.setToken(token);
-        console.log(token);
         return { success: true, username };
       } else {
         return false;
@@ -30,6 +28,7 @@ export default class Auth {
    */
   static logOut = () => {
     this.destroyToken();
+    History.push('/');
     return true;
   };
 
@@ -66,7 +65,6 @@ export default class Auth {
    */
   static isLoggedIn = () => {
     const token = this.getToken();
-    console.log(!!token, 'alo?');
     return !!token;
   };
 

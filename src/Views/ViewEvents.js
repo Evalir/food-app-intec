@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Auth from '../Utils/Auth';
 import { Context } from '../Store/Store';
@@ -37,22 +38,24 @@ const ViewEvents = () => {
   }, []);
 
   return (
-    <PageWrapper>
-      <Navbar />
-      <Grid>
-        {state.events.map(event => {
-          console.log(event.url.substr(event.url.length - 2));
-          return (
-            <FoodCard
-              key={event.url}
-              name={event.title}
-              description={event.description}
-              linkTo={`/${event.url.substr(event.url.length - 2)}`}
-            />
-          );
-        })}
-      </Grid>
-    </PageWrapper>
+    <>
+      <Helmet title="Home" />
+      <PageWrapper>
+        <Navbar />
+        <Grid>
+          {state.events.map(event => {
+            return (
+              <FoodCard
+                key={event.url}
+                name={event.title}
+                description={event.description}
+                linkTo={`/${event.url.substr(event.url.length - 2)}`}
+              />
+            );
+          })}
+        </Grid>
+      </PageWrapper>
+    </>
   );
 };
 

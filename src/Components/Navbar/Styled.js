@@ -42,11 +42,7 @@ export const UserWrapper = styled.div`
 export const UserPhoto = styled.div`
   display: inline-block;
   position: relative;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  margin: 1em 1em 0;
-  background-color: ${props => props.theme.yellow};
+  margin: 1.3em 1em 0;
 `;
 
 export const UserLink = styled(Link)`

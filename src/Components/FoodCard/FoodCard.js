@@ -18,7 +18,7 @@ const FoodCard = ({ cardKey, name, description, imgUrl, linkTo }) => {
     description.length > 50
       ? description.substring(0, 47) + '...'
       : description;
-  console.log(linkTo, 'is link to');
+
   return (
     <Card key={cardKey}>
       <ImageContainer>

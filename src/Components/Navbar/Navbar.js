@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-
 import { Context } from '../../Store/Store';
 import History from '../../Utils/History';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faUser } from '@fortawesome/free-solid-svg-icons';
 import {
   SideBar,
   Nav,
@@ -23,7 +23,7 @@ import NavButton from '../NavButton';
  * Sidebar component. Supports mobile and desktop view.
  * @namespace Navbar
  */
-const Navbar = ({ username }) => {
+const Navbar = () => {
   const { state, actions } = useContext(Context);
   const [isMobile, setIsMobile] = useState(false);
   const [show, setShow] = useState(false);
@@ -53,7 +53,9 @@ const Navbar = ({ username }) => {
     <SideBar>
       <Nav>
         <UserWrapper>
-          <UserPhoto />
+          <UserPhoto>
+            <FontAwesomeIcon icon={faUser} color="white" />
+          </UserPhoto>
           <UserLink to="/">
             {state.username === ''
               ? 'Anonymous'
@@ -68,23 +70,13 @@ const Navbar = ({ username }) => {
           <ListItem>
             <NavLink to="/create">Create Event</NavLink>
           </ListItem>
-          {!state.isLoggedIn && (
-            <ListItem>
-              <NavLink to="/login">Log In</NavLink>
-            </ListItem>
-          )}
-          {state.isLoggedIn && (
-            <ListItem>
-              <NavLink to="/logout">Log out</NavLink>
-            </ListItem>
-          )}
         </NavList>
         <NavButton
           onClick={() =>
             state.isLoggedIn ? actions.LogOut() : History.push('/login')
           }
         >
-          {state.isLoggedIn ? 'Sign in' : 'Sign Out'}
+          {state.isLoggedIn ? `Sign Out` : `Sign In `}
         </NavButton>
       </Nav>
     </SideBar>
