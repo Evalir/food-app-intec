@@ -25,6 +25,7 @@ const LogInForm = ({ handleSubmit }) => (
     <h1>Log in</h1>
     <Formik
       validationSchema={LoginSchema}
+      initialValues={{ username: '', password: '' }}
       onSubmit={(values, opts) => {
         console.log(values);
         handleSubmit(values);

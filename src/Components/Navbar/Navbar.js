@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import { Context } from '../../Store/Store';
+import History from '../../Utils/History';
+
 import {
   SideBar,
   Nav,
@@ -12,16 +15,16 @@ import {
   NavBar,
   MobileNav,
 } from './Styled';
-
 import TopDrawer from './TopDrawer/TopDrawer';
 import DrawerButton from './DrawerButton';
+import NavButton from '../NavButton';
 
 /**
  * Sidebar component. Supports mobile and desktop view.
  * @namespace Navbar
  */
 const Navbar = ({ username }) => {
-  const { state } = useContext(Context);
+  const { state, actions } = useContext(Context);
   const [isMobile, setIsMobile] = useState(false);
   const [show, setShow] = useState(false);
   // Track window size; at <= 768px render the mobile navbar view.
@@ -52,7 +55,10 @@ const Navbar = ({ username }) => {
         <UserWrapper>
           <UserPhoto />
           <UserLink to="/">
-            {state.username === '' ? 'Anonymous' : state.username}
+            {state.username === ''
+              ? 'Anonymous'
+              : state.username.charAt(0).toUpperCase() +
+                state.username.substr(1)}
           </UserLink>
         </UserWrapper>
         <NavList>
@@ -73,6 +79,13 @@ const Navbar = ({ username }) => {
             </ListItem>
           )}
         </NavList>
+        <NavButton
+          onClick={() =>
+            state.isLoggedIn ? actions.LogOut() : History.push('/login')
+          }
+        >
+          {state.isLoggedIn ? 'Sign in' : 'Sign Out'}
+        </NavButton>
       </Nav>
     </SideBar>
   );

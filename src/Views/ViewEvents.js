@@ -40,14 +40,17 @@ const ViewEvents = () => {
     <PageWrapper>
       <Navbar />
       <Grid>
-        {state.events.map(event => (
-          <FoodCard
-            key={event.url}
-            name={event.title}
-            description={event.description}
-            linkTo={`/${event.url.substr(event.url.length - 3)}`}
-          />
-        ))}
+        {state.events.map(event => {
+          console.log(event.url.substr(event.url.length - 2));
+          return (
+            <FoodCard
+              key={event.url}
+              name={event.title}
+              description={event.description}
+              linkTo={`/${event.url.substr(event.url.length - 2)}`}
+            />
+          );
+        })}
       </Grid>
     </PageWrapper>
   );

@@ -30,7 +30,7 @@ export function useActions(state, dispatch) {
    */
   async function FetchSingleEvent(id) {
     try {
-      const req = await Client.get(`/event/${id}`);
+      const req = await Client.get(`api/event/${id}`);
       const event = req.data;
       dispatch({ type: types.FETCH_EVENT, payload: event });
     } catch (err) {
@@ -50,7 +50,6 @@ export function useActions(state, dispatch) {
           Authorization: `Token ${Auth.getToken()}`,
         },
       });
-      console.log(req.status);
       dispatch({ type: types.CREATE_EVENT });
     } catch (err) {
       throw new err('Could not contact API', err);
@@ -75,7 +74,6 @@ export function useActions(state, dispatch) {
       History.push('/');
       dispatch({ type: types.LOG_IN, payload: username });
     } else {
-      console.log('error when logging in');
       dispatch({ type: 'ERROR' });
     }
   }

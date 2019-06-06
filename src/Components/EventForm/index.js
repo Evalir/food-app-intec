@@ -28,6 +28,13 @@ const EventForm = ({ buildings, handleSubmit }) => (
     <h1>Add an event!</h1>
     <Formik
       validationSchema={CreateEventSchema}
+      initialValues={{
+        name: '',
+        description: '',
+        building: '',
+        hour: '',
+        minutes: '',
+      }}
       onSubmit={(values, opts) => {
         console.log(values);
         handleSubmit(values);
