@@ -42,7 +42,7 @@ const LogInForm = ({ handleSubmit }) => (
           <Label htmlFor="password" style={{ display: 'block' }}>
             Password
           </Label>
-          <StyledField type="text" name="password" />
+          <StyledField type="password" name="password" />
           <ErrorMessage name="password" component={Alert} />
           {/* Form status message */}
           {!isValid && <Alert>Please, check your values.</Alert>}

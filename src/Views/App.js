@@ -48,24 +48,49 @@ p {
 }
 `;
 
+const routes = [
+  {
+    path: '/login',
+    exact: true,
+    component: WaitingComponent(LogIn),
+  },
+  {
+    path: '/create',
+    exact: true,
+    component: WaitingComponent(CreateEvent),
+  },
+  {
+    path: '/',
+    exact: true,
+    component: WaitingComponent(ViewEvents),
+  },
+  {
+    path: '/:id',
+    exact: true,
+    component: WaitingComponent(ViewEvent),
+  },
+];
+
+const Routes = routes => (
+  <Router history={History}>
+    <Switch>
+      {routes.map(route => (
+        <Route
+          key={route.path}
+          path={route.path}
+          exact={route.exact}
+          component={route.component}
+        />
+      ))}
+    </Switch>
+  </Router>
+);
+
 const App = () => {
   return (
     <StateProvider>
       <GlobalStyles />
-      <ThemeProvider theme={theme}>
-        <Router history={History}>
-          <Switch>
-            <Route path="/login" exact component={WaitingComponent(LogIn)} />
-            <Route
-              path="/create"
-              exact
-              component={WaitingComponent(CreateEvent)}
-            />
-            <Route path="/" exact component={WaitingComponent(ViewEvents)} />
-            <Route path="/:id" exact component={WaitingComponent(ViewEvent)} />
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{Routes(routes)}</ThemeProvider>
     </StateProvider>
   );
 };
