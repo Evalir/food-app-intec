@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../../Store/Store';
 import History from '../../Utils/History';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,18 +8,21 @@ import {
   SideBar,
   Nav,
   UserWrapper,
-  UserLink,
-  UserPhoto,
   NavList,
-  ListItem,
-  NavLink,
   NavBar,
   MobileNav,
 } from './Styled';
-import TopDrawer from './TopDrawer/TopDrawer';
+import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerButton from './DrawerButton';
 import NavButton from '../NavButton';
+import userSVG from '../../static/UserSVG.svg';
 
+import styled from 'styled-components';
+const UserSVG = props => <img src={userSVG} alt="red background" />;
+const SVG = styled.div`
+  position: absolute;
+  /* transform: translateX(-0%); */
+`;
 /**
  * Sidebar component. Supports mobile and desktop view.
  * @namespace Navbar
@@ -44,7 +48,7 @@ const Navbar = () => {
         <MobileNav>
           <DrawerButton setOpen={setShow} open={show} />
         </MobileNav>
-        <TopDrawer show={show} />
+        <SideDrawer show={show} setShow={setShow} />
       </NavBar>
     );
   }
@@ -53,31 +57,36 @@ const Navbar = () => {
     <SideBar>
       <Nav>
         <UserWrapper>
-          <UserPhoto>
-            <FontAwesomeIcon icon={faUser} color="white" />
-          </UserPhoto>
-          <UserLink to="/">
-            {state.username === ''
-              ? 'Anonymous'
-              : state.username.charAt(0).toUpperCase() +
-                state.username.substr(1)}
-          </UserLink>
+          <SVG>
+            <UserSVG />
+          </SVG>
+          <div className="user-content">
+            <div className="user-inner">
+              <FontAwesomeIcon icon={faUser} color="white" />
+            </div>
+            <Link to="/">
+              {state.username === ''
+                ? 'Anonymous'
+                : state.username.charAt(0).toUpperCase() +
+                  state.username.substr(1)}
+            </Link>
+          </div>
         </UserWrapper>
         <NavList>
-          <ListItem>
-            <NavLink to="/">Home</NavLink>
-          </ListItem>
-          <ListItem>
-            <NavLink to="/create">Create Event</NavLink>
-          </ListItem>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/create">Create Event</Link>
+          </li>
         </NavList>
-        <NavButton
+        {/* <NavButton
           onClick={() =>
             state.isLoggedIn ? actions.LogOut() : History.push('/login')
           }
         >
           {state.isLoggedIn ? `Sign Out` : `Sign In `}
-        </NavButton>
+        </NavButton> */}
       </Nav>
     </SideBar>
   );

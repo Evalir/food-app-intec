@@ -12,11 +12,12 @@ import Navbar from '../Components/Navbar/Navbar';
 const Grid = styled.div`
   grid-area: content;
   width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 0.5em;
   @media only screen and (max-width: 768px) {
     justify-content: center;
     margin-top: 64px;

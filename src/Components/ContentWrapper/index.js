@@ -7,9 +7,10 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 80%;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding-top: 1em;
+  overflow-y: scroll;
   @media only screen and (max-width: 768px) {
     margin-top: 64px;
   }

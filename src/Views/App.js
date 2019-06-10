@@ -5,7 +5,7 @@ import History from '../Utils/History';
 
 // Theme
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { theme } from '../Styled/Theme';
+import { theme, newTheme } from '../Styled/Theme';
 import StateProvider from '../Store/Store';
 
 // Components
@@ -26,9 +26,33 @@ const GlobalStyles = createGlobalStyle`
 
 body,
 html {
-  font-family: 'Rubik', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   background: white;
   overflow-x: hidden;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 33px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 18px;
 }
 
 ul,
@@ -39,12 +63,27 @@ li {
 }
 
 p {
+  font-size: 14px;
   margin: 0;
   padding: 0;
 }
 
 *:focus {
   outline: none;
+}
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
 }
 `;
 
@@ -90,7 +129,7 @@ const App = () => {
   return (
     <StateProvider>
       <GlobalStyles />
-      <ThemeProvider theme={theme}>{Routes(routes)}</ThemeProvider>
+      <ThemeProvider theme={newTheme}>{Routes(routes)}</ThemeProvider>
     </StateProvider>
   );
 };

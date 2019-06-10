@@ -11,7 +11,6 @@ import Navbar from '../Components/Navbar/Navbar';
 import EventForm from '../Components/EventForm';
 import Client from '../Utils/Client';
 
-// Login-protected Component
 const CreateEvent = () => {
   const { actions } = useContext(Context);
   const [buildings, setBuildings] = useState([]);
