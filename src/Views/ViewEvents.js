@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
@@ -10,23 +10,20 @@ import FoodCard from '../Components/FoodCard/FoodCard';
 import Navbar from '../Components/Navbar/Navbar';
 
 const Grid = styled.div`
+  /* display: relative;
+  z-index: 100; */
   grid-area: content;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 64px);
+  margin-top: 64px;
   overflow-y: scroll;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  @media only screen and (max-width: 768px) {
-    justify-content: center;
-    margin-top: 64px;
-  }
+  flex-direction: column;
 `;
 
 const ViewEvents = () => {
   const { state, actions } = useContext(Context);
-
+  const [activeURL, setActiveURL] = useState('');
   useEffect(() => {
     actions.FetchEvents();
     if (!Auth.isLoggedIn()) {
@@ -44,14 +41,24 @@ const ViewEvents = () => {
       <PageWrapper>
         <Navbar />
         <Grid>
+          <h1>LATEST EVENTS</h1>
           {state.events.map(event => {
             return (
-              <FoodCard
+              <div
                 key={event.url}
-                name={event.title}
-                description={event.description}
-                linkTo={`/${event.url.substr(event.url.length - 2)}`}
-              />
+                onClick={() =>
+                  event.url === activeURL
+                    ? setActiveURL('')
+                    : setActiveURL(event.url)
+                }
+              >
+                <FoodCard
+                  name={event.title}
+                  description={event.description}
+                  linkTo={`/${event.url.substr(event.url.length - 2)}`}
+                  isOpen={event.url === activeURL}
+                />
+              </div>
             );
           })}
         </Grid>

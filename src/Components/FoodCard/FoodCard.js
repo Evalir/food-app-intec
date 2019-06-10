@@ -1,39 +1,38 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
 
-import {
-  Card,
-  ImageContainer,
-  FoodImage,
-  InfoWrapper,
-  FoodTitle,
-  FoodLink,
-} from './Styled';
+import { Card } from './Styled';
 
-const FoodCard = ({ cardKey, name, description, imgUrl, linkTo }) => {
+const Img = styled.div`
+  background: ${props => props.theme.gray_s};
+  width: 48px;
+  height: 48px;
+  border-radius: 100px;
+  margin: 0 1em 0 0;
+  float: left;
+`;
+
+const FoodCard = ({ cardKey, name, description, imgUrl, linkTo, isOpen }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
-  const newName = name.length > 25 ? name.substring(0, 20) + '...' : name;
+  const newName = name.length > 40 ? name.substring(0, 40) + '...' : name;
   const newDescription =
     description.length > 50
       ? description.substring(0, 47) + '...'
       : description;
 
   return (
-    <Card key={cardKey}>
-      <ImageContainer>
-        {!imgLoaded && (
-          <div style={{ marginLeft: '70px' }}>
-            <Loader type="Oval" color="#817E8E" height={80} width={80} />
+    <Card isOpen={isOpen}>
+      <Img />
+      <h3>{newName}</h3>
+      {isOpen && (
+        <div>
+          <p>{newDescription}</p>
+          <div className="button-align">
+            <button>klk</button>
           </div>
-        )}
-        <FoodImage src={imgUrl} onLoad={() => setImgLoaded(true)} />
-      </ImageContainer>
-      <InfoWrapper>
-        <FoodTitle>{newName}</FoodTitle>
-        <p>{newDescription}</p>
-        <FoodLink to={linkTo}>View</FoodLink>
-      </InfoWrapper>
+        </div>
+      )}
     </Card>
   );
 };
