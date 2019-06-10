@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Drawer = styled.header`
   background: ${props => props.theme.gray_sp};
   width: 70%;
+  max-width: 300px;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -20,7 +21,6 @@ const DrawerNav = styled.nav`
   height: 100%;
   color: ${props => props.theme.gray_d};
   font-family: 'Poppins', Helvetica;
-  text-transform: uppercase;
   display: grid;
   grid-template-rows: [user] 100px [nav_content] 1fr [sign] 100px;
   .user-content {
@@ -45,6 +45,7 @@ const DrawerNav = styled.nav`
     }
   }
   ul {
+    text-transform: uppercase;
     grid-area: nav_content;
     grid-column: span 1;
     grid-row: span 1;
@@ -61,6 +62,7 @@ const CloseButton = styled.button`
   grid-column: span 1;
   grid-row: span 1;
   font-size: 48px;
+  cursor: pointer;
 `;
 
 const NavLink = styled(Link)`

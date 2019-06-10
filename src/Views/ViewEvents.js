@@ -15,10 +15,11 @@ const Grid = styled.div`
   grid-area: content;
   width: 100%;
   height: calc(100vh - 64px);
-  margin-top: 64px;
+  margin: 64px 0 0 16px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 `;
 
 const ViewEvents = () => {

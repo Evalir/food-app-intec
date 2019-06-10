@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Context } from '../../Store/Store';
-import History from '../../Utils/History';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+
+import { Context } from '../../Store/Store';
+
 import {
   SideBar,
   Nav,
@@ -14,15 +15,8 @@ import {
 } from './Styled';
 import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerButton from './DrawerButton';
-import NavButton from '../NavButton';
 import userSVG from '../../static/UserSVG.svg';
 
-import styled from 'styled-components';
-const UserSVG = props => <img src={userSVG} alt="red background" />;
-const SVG = styled.div`
-  position: absolute;
-  /* transform: translateX(-0%); */
-`;
 /**
  * Sidebar component. Supports mobile and desktop view.
  * @namespace Navbar
@@ -57,9 +51,9 @@ const Navbar = () => {
     <SideBar>
       <Nav>
         <UserWrapper>
-          <SVG>
-            <UserSVG />
-          </SVG>
+          <div style={{ position: 'absolute' }}>
+            <img src={userSVG} alt="red background" />
+          </div>
           <div className="user-content">
             <div className="user-inner">
               <FontAwesomeIcon icon={faUser} color="white" />

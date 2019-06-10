@@ -12,6 +12,7 @@ const Bar = styled.div`
 const Button = styled.button`
   border: none;
   background: none;
+  cursor: pointer;
 `;
 
 const DrawerButton = ({ setOpen, open }) => {

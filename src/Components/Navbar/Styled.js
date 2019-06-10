@@ -11,7 +11,7 @@ export const Nav = styled.nav`
   display: grid;
   grid-template-rows: [user] 250px [nav_content] 1fr [sign] 100px;
   grid-template-columns: 1fr;
-  box-shadow: 10 4px 20px 0px rgba(236, 239, 243, 0.5);
+  box-shadow: 10px 4px 20px 0px rgba(236, 239, 243, 0.5);
   padding: 0 1em;
 `;
 

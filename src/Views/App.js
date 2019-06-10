@@ -64,6 +64,7 @@ li {
 
 p {
   font-size: 14px;
+  color: #70757a;
   margin: 0;
   padding: 0;
 }
