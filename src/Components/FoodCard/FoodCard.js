@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { Card } from './Styled';
 import { Button } from '../Button';
 
@@ -28,8 +28,11 @@ const Arrow = styled.div`
   }
 `;
 
+const LinkButton = withRouter(({ history, path, text }) => (
+  <Button onClick={() => history.push(path)}>{text}</Button>
+));
+
 const FoodCard = ({ cardKey, name, description, imgUrl, linkTo, isOpen }) => {
-  const [imgLoaded, setImgLoaded] = useState(false);
   const newName = name.length > 40 ? name.substring(0, 40) + '...' : name;
   const newDescription =
     description.length > 50
@@ -47,7 +50,7 @@ const FoodCard = ({ cardKey, name, description, imgUrl, linkTo, isOpen }) => {
         <div className="event-content">
           <p style={{ marginBottom: '2.5em' }}>{newDescription}</p>
           <div className="button-align">
-            <Button>View Event</Button>
+            <LinkButton path={linkTo} text="View Event" />
           </div>
         </div>
       )}

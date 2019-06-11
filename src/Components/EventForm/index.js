@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-import FoodButton from '../FoodButton';
-import Alert from '../Alert';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 
 import { StyledField, Label, ButtonWrapper } from './Styled';
+import FoodButton from '../FoodButton';
+import Alert from '../Alert';
 import EventCard from '../EventCard';
 
 const CreateEventSchema = new Yup.object().shape({
@@ -69,7 +68,7 @@ const EventForm = ({ buildings, handleSubmit }) => (
             End time (HH:mm)
           </Label>
           <Field component="select" name="hour">
-            {[...Array(12).keys()]
+            {[...Array(23).keys()]
               .map(x => x + 1)
               .map(opt => (
                 <option value={+opt < 10 ? '0' + opt : opt} key={opt}>

@@ -22,7 +22,7 @@ import userSVG from '../../static/UserSVG.svg';
  * @namespace Navbar
  */
 const Navbar = () => {
-  const { state, actions } = useContext(Context);
+  const { state } = useContext(Context);
   const [isMobile, setIsMobile] = useState(false);
   const [show, setShow] = useState(false);
   // Track window size; at <= 768px render the mobile navbar view.

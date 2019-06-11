@@ -45,7 +45,7 @@ export function useActions(state, dispatch) {
    * */
   async function CreateEvent(newEvent) {
     try {
-      const req = await Client.post('/api/event/', newEvent, {
+      await Client.post('/api/event/', newEvent, {
         headers: {
           Authorization: `Token ${Auth.getToken()}`,
         },

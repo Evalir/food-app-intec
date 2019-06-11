@@ -7,7 +7,6 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 80%;
-  height: 100vh;
   margin: 0 auto;
   padding-top: 1em;
   overflow-y: scroll;

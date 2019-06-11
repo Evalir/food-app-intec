@@ -4,8 +4,9 @@ import { Router, Route, Switch } from 'react-router-dom';
 import History from '../Utils/History';
 
 // Theme
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { theme, newTheme } from '../Styled/Theme';
+import { ThemeProvider } from 'styled-components';
+import { newTheme } from '../Styled/Theme';
+import GlobalStyles from '../Styled/GlobalStyles';
 import StateProvider from '../Store/Store';
 
 // Components
@@ -15,78 +16,6 @@ const ViewEvents = lazy(() => import('./ViewEvents'));
 const ViewEvent = lazy(() => import('./ViewEvent'));
 const CreateEvent = lazy(() => import('./CreateEvent'));
 const LogIn = lazy(() => import('./LogIn'));
-
-const GlobalStyles = createGlobalStyle`
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-}
-
-body,
-html {
-  font-family: 'Poppins', Helvetica, Arial, sans-serif;
-  background: white;
-  overflow-x: hidden;
-}
-
-h1 {
-  font-size: 36px;
-}
-
-h2 {
-  font-size: 33px;
-}
-
-h3 {
-  font-size: 28px;
-}
-
-h4 {
-  font-size: 24px;
-}
-
-h5 {
-  font-size: 20px;
-}
-
-h6 {
-  font-size: 18px;
-}
-
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-p {
-  font-size: 14px;
-  color: #70757a;
-  margin: 0;
-  padding: 0;
-}
-
-*:focus {
-  outline: none;
-}
-button {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-    -webkit-appearance: none;
-}
-`;
 
 const routes = [
   {

@@ -21,7 +21,7 @@ const ViewEvent = ({ match }) => {
 
   return (
     <>
-      <Helmet title={title} />
+      <Helmet title={'Food App | ' + title} />
       <PageWrapper>
         <Navbar />
         <ContentWrapper>
