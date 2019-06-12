@@ -14,6 +14,8 @@ export default class Auth {
       if (req.status === 200) {
         const token = req.data.token;
         this.setToken(token);
+        this.setUsername(username);
+        History.push('/');
         return { success: true, username };
       } else {
         return false;
@@ -28,7 +30,8 @@ export default class Auth {
    */
   static logOut = () => {
     this.destroyToken();
-    History.push('/');
+    this.destroyUsername();
+    History.push('/login');
     return true;
   };
 
@@ -89,5 +92,24 @@ export default class Auth {
    */
   static getToken = () => {
     return localStorage.getItem('user_token');
+  };
+
+  /**
+   * Sets the username to local storage.
+   */
+  static setUsername = username => {
+    localStorage.setItem('user_name', username);
+  };
+  /**
+   * Gets the username from local storage.
+   */
+  static getUsername = () => {
+    localStorage.getItem('user_name');
+  };
+  /**
+   * Removes the username from local storage.
+   */
+  static destroyUsername = () => {
+    localStorage.removeItem('user_name');
   };
 }

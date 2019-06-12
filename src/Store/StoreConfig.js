@@ -18,5 +18,5 @@ export const INITIAL_STATE = {
   currentEvent: {},
   loading: false,
   isLoggedIn: false,
-  username: '',
+  username: localStorage.getItem('user_name') || '',
 };

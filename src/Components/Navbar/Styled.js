@@ -9,10 +9,15 @@ export const SideBar = styled.header`
 export const Nav = styled.nav`
   height: 100%;
   display: grid;
-  grid-template-rows: [user] 250px [nav_content] 1fr [sign] 100px;
+  grid-template-rows: [user] 250px [nav_content] 1fr [sign] 150px;
   grid-template-columns: 1fr;
   box-shadow: 10px 4px 20px 0px rgba(236, 239, 243, 0.5);
   padding: 0 1em;
+  .sign_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const UserWrapper = styled.div`
