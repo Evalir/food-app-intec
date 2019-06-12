@@ -38,6 +38,8 @@ export const Card = styled.div`
 
   .event-content {
     grid-column: 1 / -1;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   @media (max-width: 768px) {

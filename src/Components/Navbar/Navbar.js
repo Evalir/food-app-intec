@@ -15,14 +15,15 @@ import {
 } from './Styled';
 import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerButton from './DrawerButton';
+import { Button } from '../Button';
 import userSVG from '../../static/UserSVG.svg';
-
+import History from '../../Utils/History';
 /**
  * Sidebar component. Supports mobile and desktop view.
  * @namespace Navbar
  */
 const Navbar = () => {
-  const { state } = useContext(Context);
+  const { state, actions } = useContext(Context);
   const [isMobile, setIsMobile] = useState(false);
   const [show, setShow] = useState(false);
   // Track window size; at <= 768px render the mobile navbar view.
@@ -36,6 +37,15 @@ const Navbar = () => {
     window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
     return () => window.removeEventListener('resize', handleSizeChange);
   }, []);
+
+  function handleLogClick() {
+    if (state.isLoggedIn) {
+      actions.LogOut();
+    } else {
+      History.push('/login');
+    }
+  }
+
   if (isMobile) {
     return (
       <NavBar>
@@ -74,13 +84,14 @@ const Navbar = () => {
             <Link to="/create">Create Event</Link>
           </li>
         </NavList>
-        {/* <NavButton
-          onClick={() =>
-            state.isLoggedIn ? actions.LogOut() : History.push('/login')
-          }
-        >
-          {state.isLoggedIn ? `Sign Out` : `Sign In `}
-        </NavButton> */}
+        <div className="sign_button">
+          {!state.isLoggedIn && (
+            <Button onClick={() => History.push('/login')}>Log In</Button>
+          )}
+          {state.isLoggedIn && (
+            <Button onClick={() => actions.LogOut()}>Log Out</Button>
+          )}
+        </div>
       </Nav>
     </SideBar>
   );

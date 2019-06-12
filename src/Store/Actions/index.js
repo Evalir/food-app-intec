@@ -1,7 +1,6 @@
 import { types } from '../StoreConfig';
 import Client from '../../Utils/Client';
 import Auth from '../../Utils/Auth';
-import History from '../../Utils/History';
 /**
  * Custom hook for actions.
  * @param {any} state
@@ -71,7 +70,6 @@ export function useActions(state, dispatch) {
   async function LogIn(credentials) {
     const { success, username } = await Auth.logIn(credentials);
     if (success) {
-      History.push('/');
       dispatch({ type: types.LOG_IN, payload: username });
     } else {
       dispatch({ type: 'ERROR' });
@@ -81,7 +79,6 @@ export function useActions(state, dispatch) {
   function LogOut() {
     const success = Auth.logOut();
     if (success) {
-      History.push('/');
       dispatch({ type: types.LOG_OUT });
     }
   }
