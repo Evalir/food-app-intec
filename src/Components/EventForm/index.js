@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
 import { StyledField, Label, ButtonWrapper } from './Styled';
+import TimePicker from 'react-time-picker';
 import FoodButton from '../FoodButton';
 import Alert from '../Alert';
 import EventCard from '../EventCard';
@@ -18,8 +19,7 @@ const CreateEventSchema = new Yup.object().shape({
     .max(100, 'Too long')
     .required('Required!'),
   building: Yup.string().required('Required'),
-  hour: Yup.string().required('Required'),
-  minutes: Yup.string().required('Required'),
+  endTime: Yup.string().required('Required'),
 });
 
 const EventForm = ({ buildings, handleSubmit }) => (
@@ -28,17 +28,16 @@ const EventForm = ({ buildings, handleSubmit }) => (
     <Formik
       validationSchema={CreateEventSchema}
       initialValues={{
-        name: '',
-        description: '',
-        building: '',
-        hour: '',
-        minutes: '',
+        name: 'My event',
+        description: 'An event with tons of food',
+        building: 'AH',
+        endTime: '22:00',
       }}
       onSubmit={(values, opts) => {
         console.log(values);
         handleSubmit(values);
       }}
-      render={({ status, isSubmitting, isValid }) => (
+      render={({ status, isSubmitting, isValid, values, setFieldValue }) => (
         <Form>
           {/* Event name field */}
           <Label htmlFor="name" style={{ display: 'block' }}>
@@ -63,28 +62,12 @@ const EventForm = ({ buildings, handleSubmit }) => (
               </option>
             ))}
           </StyledField>
-          {/* datetime component */}
-          <Label htmlFor="hour" style={{ display: 'block' }}>
-            End time (HH:mm)
-          </Label>
-          <Field component="select" name="hour">
-            {[...Array(23).keys()]
-              .map(x => x + 1)
-              .map(opt => (
-                <option value={+opt < 10 ? '0' + opt : opt} key={opt}>
-                  {+opt < 10 ? '0' + opt : opt}
-                </option>
-              ))}
-          </Field>
-          <Field component="select" name="minutes">
-            {[...Array(60).keys()]
-              .map(x => x + 1)
-              .map(opt => (
-                <option value={+opt < 10 ? '0' + opt : opt} key={opt}>
-                  {+opt < 10 ? '0' + opt : opt}
-                </option>
-              ))}
-          </Field>
+          {/* Time Picker */}
+          <TimePicker
+            name="endTime"
+            value={values['endTime']}
+            onChange={e => setFieldValue('endTime', e)}
+          />
           {/* Form status message */}
           {!isValid && <Alert>Please, check your values.</Alert>}
           <ButtonWrapper>

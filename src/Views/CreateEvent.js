@@ -24,17 +24,16 @@ const CreateEvent = () => {
     fetchBuildings();
   }, []);
 
-  function handleSubmit({ name, description, building, hour, minutes }) {
-    const time = moment(hour + ':' + minutes, 'HH:mm').toDate();
+  function handleSubmit({ name, description, building, endTime }) {
     const event = {
       title: name,
       building,
       description,
       start: moment().toDate(),
-      end: time,
+      end: moment(endTime, 'HH:mm').toDate(),
     };
     console.log(event);
-    actions.CreateEvent(event);
+    //actions.CreateEvent(event);
   }
 
   return (
