@@ -14,7 +14,7 @@ const flowIn = keyframes`
 export const Card = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 10% auto 10%;
+  grid-template-columns: 20% auto 10%;
   z-index: 100;
   width: 80%;
   height: ${props => (props.isOpen ? 'auto' : '80px')};
@@ -28,6 +28,11 @@ export const Card = styled.div`
   border: 1px solid rgba(112, 117, 122, 0.05000000074505806);
   transition: all 0.2s ease;
   animation: ${flowIn} 0.5s ease;
+
+  .header {
+    grid-column: 2 / 3;
+  }
+
   .button-align {
     position: absolute;
     right: 5%;
@@ -43,6 +48,6 @@ export const Card = styled.div`
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 10% 1fr;
+    grid-template-columns: 20% 1fr;
   }
 `;

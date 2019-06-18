@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Card } from './Styled';
 import { Button } from '../Button';
 
@@ -17,14 +17,36 @@ const Img = styled.div`
   float: left;
 `;
 
+const flipUp = keyframes`
+  from {
+    transform: rotate(0deg);
+  } 
+  to {
+    transform: rotate(180deg);
+  }
+`;
+
+const flipDown = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+`;
+
 const Arrow = styled.div`
   grid-column: 3 / -1;
   width: 32px;
   height: 32px;
-  transition: all 0.3s ease;
   cursor: pointer;
-  img {
-    transform: ${props => (!props.open ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: rotate(180deg);
+  .flipped {
+    animation: ${props => (props.isOpen ? flipUp : flipDown)} 0.75s ease;
+    transform: rotate(180deg);
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -42,9 +64,9 @@ const FoodCard = ({ cardKey, name, description, imgUrl, linkTo, isOpen }) => {
   return (
     <Card isOpen={isOpen}>
       <Img />
-      <h3>{newName}</h3>
-      <Arrow open={isOpen}>
-        <img src={ArrowSVG} alt="arrow" />
+      <h4 className="header">{newName}</h4>
+      <Arrow isOpen={isOpen}>
+        <img src={ArrowSVG} alt="arrow" className={isOpen ? 'flipped' : ''} />
       </Arrow>
       {isOpen && (
         <div className="event-content">

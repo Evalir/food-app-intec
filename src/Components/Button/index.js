@@ -30,6 +30,11 @@ export const SuccessButton = styled.button`
   font-weight: normal;
   font-size: 12px;
   line-height: 9px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    transform: translateY(-5%);
+  }
 `;
 
 export const WarningButton = styled.button`
@@ -45,4 +50,9 @@ export const WarningButton = styled.button`
   font-weight: normal;
   font-size: 12px;
   line-height: 9px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  &:hover {
+    transform: translateY(-5%);
+  }
 `;

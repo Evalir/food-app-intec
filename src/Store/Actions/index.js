@@ -1,6 +1,7 @@
 import { types } from '../StoreConfig';
 import Client from '../../Utils/Client';
 import Auth from '../../Utils/Auth';
+import History from '../../Utils/History';
 /**
  * Custom hook for actions.
  * @param {any} state
@@ -50,6 +51,7 @@ export function useActions(state, dispatch) {
         },
       });
       dispatch({ type: types.CREATE_EVENT });
+      History.push('/');
     } catch (err) {
       throw new err('Could not contact API', err);
     }

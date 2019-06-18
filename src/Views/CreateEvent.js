@@ -33,7 +33,7 @@ const CreateEvent = () => {
       end: moment(endTime, 'HH:mm').toDate(),
     };
     console.log(event);
-    //actions.CreateEvent(event);
+    actions.CreateEvent(event);
   }
 
   return (
